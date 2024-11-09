@@ -3,17 +3,21 @@ class Computer:
         self.__cpu = cpu
         self.__memory = memory
 
-    def set_cpu(self, cpu):
-        self.__cpu = cpu
-
-    def get_cpu(self):
+    @property
+    def cpu(self):
         return self.__cpu
 
-    def set_memory(self, memory):
-        self.__memory = memory
+    @cpu.setter
+    def cpu(self, value):
+        self.__cpu = value
 
-    def get_memory(self):
+    @property
+    def memory(self):
         return self.__memory
+
+    @memory.setter
+    def memory(self, value):
+        self.__memory = value
 
     def make_computations(self):
         return self.__cpu + self.__memory
@@ -44,11 +48,13 @@ class Phone:
     def __init__(self, sim_cards_list):
         self.__sim_cards_list = sim_cards_list
 
-    def set_sim_cards_list(self, sim_cards_list):
-        self.__sim_cards_list = sim_cards_list
-
-    def get_sim_cards_list(self):
+    @property
+    def sim_cards_list(self):
         return self.__sim_cards_list
+
+    @sim_cards_list.setter
+    def sim_cards_list(self, value):
+        self.__sim_cards_list = value
 
     def call(self, sim_card_number, call_to_number):
         if 1 <= sim_card_number <= len(self.__sim_cards_list):
@@ -70,7 +76,8 @@ class SmartPhone(Computer, Phone):
         print(f"Построение маршрута до {location}")
 
     def __str__(self):
-        return f"SmartPhone(cpu={self.get_cpu()}, memory={self.get_memory()}, sim_cards_list={self.get_sim_cards_list()})"
+        return f"SmartPhone(cpu={self.cpu}, memory={self.memory}, sim_cards_list={self.sim_cards_list})"
+
 
 computer = Computer(cpu=4, memory=16)
 phone = Phone(sim_cards_list=["Beeline", "MegaCom", "O!"])
@@ -94,3 +101,4 @@ print(computer < smartphone1)
 print(computer <= smartphone2)
 print(computer > smartphone2)
 print(computer >= smartphone1)
+
