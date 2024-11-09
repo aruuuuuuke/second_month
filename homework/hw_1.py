@@ -13,14 +13,13 @@ class Person:
 
 
 class Student(Person):
-    def __init__(self, full_name, age, is_married, marks):
+    def __init__(self, full_name, age, is_married, **marks):
         super().__init__(full_name, age, is_married)
         self.marks = marks
 
     def Average(self):
-        for subject in self.marks:
-            average = sum(self.marks[subject]) / len(self.marks[subject])
-            print(f"Average mark for {subject}: {average}")
+        average = sum(self.marks.values()) / len(self.marks.values())
+        return f'average:{average}'
 
 
 class Teacher(Person):
@@ -32,7 +31,8 @@ class Teacher(Person):
 
     def introduce_myself(self):
         super().introduce_myself()
-        print(f'I have {self.experience} years of experience.')
+        print(f'I have {self.experience} years of experience.'
+              f'\nMy salary is {self.Salary()}')
 
     def Salary(self):
         bonus = self.base_salary / 100 * 5
@@ -48,19 +48,18 @@ class Teacher(Person):
 
 
 teacher = Teacher("Olga Ivanova", 35, False, 5)
-
 teacher.introduce_myself()
-print(f"Teacher's salary: {teacher.Salary()}")
+
 
 def create_students():
-    students = []
-    students.append(Student("Aruuke", 17, False, {"Mathematics": [5, 4, 3], "Science": [4, 5, 5], "English": [4, 3, 5]}))
-    students.append(Student("Aliya", 15, False, {"Mathematics": [4, 4, 4], "Science": [5, 5, 4], "English": [3, 4, 5]}))
-    students.append(Student("Chyngyz", 12, False, {"Mathematics": [3, 4, 3], "Science": [4, 4, 5], "English": [5, 4, 4]}))
-    return students
+    first_st = Student("Арууке", 17, False, math=5, science=4, history=3)
+    second_st = Student("Алибек", 20, True, math=5, science=5, history=4)
+    third_st = Student("Алтынай", 19, False, math=3, science=3, history=5)
+    student_list = [first_st, second_st, third_st]
+    return student_list
 
 
-# Вызов функции и вывод информации о студентах
 student_list = create_students()
 for student in student_list:
-    student.introduce_myself()
+    student.introduce_myself()  # Просто вызываем метод без print
+    print(f"My marks: {student.marks}, {student.Average()}\n")
