@@ -21,7 +21,6 @@ class Student(Person):
         average = sum(self.marks.values()) / len(self.marks.values())
         return f'average:{average}'
 
-
 class Teacher(Person):
     base_salary = 30000
 
@@ -61,5 +60,5 @@ def create_students():
 
 student_list = create_students()
 for student in student_list:
-    student.introduce_myself()  # Просто вызываем метод без print
+    student.introduce_myself()
     print(f"My marks: {student.marks}, {student.Average()}\n")

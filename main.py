@@ -3,10 +3,10 @@ import logic
 
 def main():
     min_number, max_number, attempts, capital = logic.start_game()
-    print(f"Добро пожаловать в игру 'Угадай число'!")
-    print(f"Ваш начальный капитал: {capital} рублей")
+    print(f"Добро пожаловать в 'Угадай число'!")
+    print(f"Ваш начальный капитал: {capital}")
     print(f"Задание: Угадайте число от {min_number} до {max_number}")
-    print(f"У вас {attempts} попыток. Удачи!")
+    print(f"У вас {attempts} попыток.")
     for attempt in range(1, attempts + 1):
         print(f"\nПопытка {attempt} из {attempts}. Ваш капитал: {capital} рублей")
 
