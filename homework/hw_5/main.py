@@ -1,4 +1,4 @@
-import logic
+from homework.hw_5 import logic
 
 
 def main():
