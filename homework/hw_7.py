@@ -99,7 +99,7 @@ def select_by_name(connection):
 
 
 sql_to_cerate_products_table = """
-CREATE TABLE PRODUCTS (
+    CREATE TABLE PRODUCTS (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     product_title VARCHAR(200) NOT NULL,
     price FLOAT(10, 2) NOT NULL DEFAULT 0.0,
